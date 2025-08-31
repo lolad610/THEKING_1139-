@@ -163,7 +163,7 @@
         #top-skills { list-style:none; padding:0; margin:0; }
         #top-skills li { margin:8px 0; padding:10px; background-color:var(--card-bg); border-radius:var(--radius); transition: background var(--transition-speed), transform var(--transition-speed); }
         #top-skills li:hover { background-color: var(--accent-color); color: var(--bg-color); transform: translateY(-3px); }
-        .contact-btn { display:block; margin:10px 0; padding:10px; background-color:var(--accent-color); border:none; border-radius:var(--radius); color:var(--bg-color); text-align:center; cursor:pointer; }
+        .contact-btn { display:block; margin:10px 0; padding:10px; background-color:var(--accent-color); border:none; border-radius:var(--radius); color:var(--bg-color); text-align:center; cursor:poin[...]
         .contact-btn:hover { transform: scale(1.05); box-shadow:0 0 15px var(--accent-color); }
         #projects-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:15px; }
         .project-card { cursor:pointer; overflow:hidden; border-radius:var(--radius); box-shadow:0 4px 10px rgba(0,0,0,0.4); transition: transform 0.4s ease, box-shadow 0.4s ease; }
@@ -178,7 +178,7 @@
         #close-lightbox { position:absolute; top:15px; right:15px; font-size:1.8rem; color:var(--main-color); cursor:pointer; transition: color var(--transition-speed); }
         #close-lightbox:hover { color:var(--accent-color); }
         #skills-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap:15px; }
-        .skill-card { padding:15px; text-align:center; background-color:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); font-size:0.9rem; transition: transform var(--transition-speed), background var(--transition-speed), box-shadow var(--transition-speed); }
+        .skill-card { padding:15px; text-align:center; background-color:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); font-size:0.9rem; transition: transform var(--[...]
         .skill-card:hover { transform: scale(1.08); background-color:var(--accent-color); color:var(--bg-color); box-shadow:0 0 15px var(--accent-color); }
         #testimonials { text-align:center; }
         #testimonial-text { font-size:1.2rem; font-style:italic; opacity:0; transition: opacity 0.8s ease, transform 0.8s ease; transform: translateX(-15px); }
@@ -564,19 +564,23 @@
             document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
             document.getElementById('projects-grid').focus();
         }
-        // Projects array — now includes UI10 at the front
+        // Projects array — now includes 3 extra cards at the end
         const projects = [
-    { name: 'UI10', images: ['images/UI10.png'] },
-    { name: 'HUD Design 1', images: ['images/UI1.png'] },
-    { name: 'Menu System', images: ['images/UI2.png'] },
-    { name: 'Lobby UI', images: ['images/UI3.png'] },
-    { name: 'Game Polish', images: ['images/UI4.png'] },
-    { name: 'HUD Design 2', images: ['images/UI5.png'] },
-    { name: 'Inventory Menu', images: ['images/UI6.png'] },
-    { name: 'Shop UI', images: ['images/UI7.png'] },
-    { name: 'Settings Panel', images: ['images/UI8.png'] },
-    { name: 'Codes', images: ['images/UI9.png'] }
-];
+            { name: 'Codite', images: ['images/UI10.png'] },
+            { name: 'Play button', images: ['images/UI1.png'] },
+            { name: 'Anime Health Bar', images: ['images/UI2.png'] },
+            { name: 'Naratu Health Bar', images: ['images/UI3.png'] },
+            { name: 'Main Menu', images: ['images/UI4.png'] },
+            { name: 'Inventory', images: ['images/UI5.png'] },
+            { name: 'Play Button', images: ['images/UI6.png'] },
+            { name: 'Skill Bar', images: ['images/UI7.png'] },
+            { name: 'Health Chakra Energy', images: ['images/UI8.png'] },
+            { name: 'Codes', images: ['images/UI9.png'] },
+            // New cards below
+            { name: 'Naratu Chakra', images: ['images/UI11.png'] },
+            { name: 'Customer Ui', images: ['images/UI12.png'] },
+            { name: 'Grow a Garden Stock UI', images: ['images/UI13.png'] }
+        ];
 
         const projectsGrid = document.getElementById('projects-grid');
         projects.forEach((project, index) => {
@@ -691,4 +695,5 @@
         };
     </script>
 </body>
+
 </html>
