@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Roblox UI/UX Designer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #060b13;
+            --main-color: #f0f0f0;
+            --accent-color: #00bfff;
+            --card-bg: #111a25;
+            --card-border: #1f364a;
+            --transition-speed: 0.3s;
+            --radius: 8px;
+        }
+        html,body { height:100%; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: var(--main-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* NEW: animated canvas background (blurred colorful blobs + sparklers) */
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* behind UI */
+            pointer-events: none; /* don't block clicks */
+            display: block;
+            transform: translateZ(0);
+        }
+
+        /* keep rest of your styles unchanged (slightly shortened here for brevity) */
+        #intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            text-align: center;
+        }
+        #intro.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        #intro h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color);
+        }
+        #intro p {
+            font-size: 1.2rem;
+            margin: 10px 0 20px;
+            color: #b0b0b0;
+        }
+        #intro button {
+            padding: 12px 25px;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: var(--radius);
+            color: var(--bg-color);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        #intro button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(6, 11, 19, 0.8);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        #logo {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+        nav a {
+            margin-left: 15px;
+            color: var(--main-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-speed), transform var(--transition-speed);
+        }
+        nav a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: 0 auto 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 0 15px var(--accent-color);
+        }
+        #hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        #hero-left { flex:1; min-width:280px; }
+        #hero-left h1 { font-size: 2.2rem; color: var(--main-color); margin:0 0 10px; }
+        #hero-left p { font-size: 1.1rem; color: #b0b0b0; }
+        .discord-chip {
+            display: inline-block;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background var(--transition-speed), color var(--transition-speed);
+        }
+        .discord-chip:hover { background-color: var(--accent-color); color: var(--bg-color); }
+        #download-btn { margin-top:15px; padding:10px 20px; background-color:var(--accent-color); border:none; border-radius:var(--radius); color:var(--bg-color); cursor:pointer; }
+        #download-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--accent-color); }
+        #hero-right { flex:1; min-width:280px; }
+        #top-skills { list-style:none; padding:0; margin:0; }
+        #top-skills li { margin:8px 0; padding:10px; background-color:var(--card-bg); border-radius:var(--radius); transition: background var(--transition-speed), transform var(--transition-speed); }
+        #top-skills li:hover { background-color: var(--accent-color); color: var(--bg-color); transform: translateY(-3px); }
+        .contact-btn { display:block; margin:10px 0; padding:10px; background-color:var(--accent-color); border:none; border-radius:var(--radius); color:var(--bg-color); text-align:center; cursor:pointer; }
+        .contact-btn:hover { transform: scale(1.05); box-shadow:0 0 15px var(--accent-color); }
+        #projects-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:15px; }
+        .project-card { cursor:pointer; overflow:hidden; border-radius:var(--radius); box-shadow:0 4px 10px rgba(0,0,0,0.4); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 15px var(--accent-color); }
+        .project-card img { width:100%; height:auto; display:block; transition: opacity var(--transition-speed); }
+        .project-card:hover img { opacity:0.9; }
+        .project-caption { text-align:center; padding:8px; background-color:var(--card-bg); font-size:0.9rem; }
+        #lightbox { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:2000; }
+        #lightbox.active { display:flex; }
+        #slideshow { max-width:80%; max-height:80%; position:relative; }
+        #slideshow img { width:100%; height:auto; border-radius:var(--radius); box-shadow: 0 0 20px var(--accent-color); }
+        #close-lightbox { position:absolute; top:15px; right:15px; font-size:1.8rem; color:var(--main-color); cursor:pointer; transition: color var(--transition-speed); }
+        #close-lightbox:hover { color:var(--accent-color); }
+        #skills-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap:15px; }
+        .skill-card { padding:15px; text-align:center; background-color:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); font-size:0.9rem; transition: transform var(--transition-speed), background var(--transition-speed), box-shadow var(--transition-speed); }
+        .skill-card:hover { transform: scale(1.08); background-color:var(--accent-color); color:var(--bg-color); box-shadow:0 0 15px var(--accent-color); }
+        #testimonials { text-align:center; }
+        #testimonial-text { font-size:1.2rem; font-style:italic; opacity:0; transition: opacity 0.8s ease, transform 0.8s ease; transform: translateX(-15px); }
+        #testimonial-text.fade-in { opacity:1; transform: translateX(0); }
+        #testimonial-author { margin-top:8px; font-weight:500; color:var(--accent-color); font-size:0.9rem; }
+        form { display:flex; flex-direction:column; gap:12px; }
+        label { font-size:0.9rem; color:var(--main-color); }
+        input, select, textarea { padding:12px; border:1px solid var(--card-border); border-radius:var(--radius); background-color:var(--card-bg); color:var(--main-color); font-size:0.9rem; }
+        input:focus, select:focus, textarea:focus { background-color:#1a2736; box-shadow: 0 0 10px var(--accent-color); outline:none; }
+        button[type="submit"] { padding:12px; background-color:var(--accent-color); border:none; border-radius:var(--radius); color:var(--bg-color); cursor:pointer; font-size:0.9rem; }
+        button[type="submit"]:hover { transform: scale(1.05); box-shadow:0 0 15px var(--accent-color); }
+        footer { text-align:center; padding:15px; background-color:rgba(6,11,19,0.8); backdrop-filter: blur(5px); border-top:1px solid var(--card-border); font-size:0.8rem; color:#b0b0b0; }
+
+        /* --- STAT CARD (small styles added, minimal) --- */
+        .stat-card {
+            display:flex;
+            gap:12px;
+            align-items:center;
+            padding:12px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius:8px;
+            margin-bottom:12px;
+        }
+        .stat-card .circle {
+            width:72px;
+            height:72px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: conic-gradient(#00f5a0 0% 50%, #00d9ff 50% 100%);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+        }
+        .stat-card .circle .value {
+            width:52px;
+            height:52px;
+            border-radius:50%;
+            background: var(--card-bg);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:700;
+            color:var(--main-color);
+            border:3px solid rgba(0,0,0,0.2);
+        }
+        .stat-meta { flex:1; min-width:0; }
+        .stat-meta .title { color:var(--accent-color); font-weight:600; margin:0 0 6px 0; }
+        .stat-meta .level-row { display:flex; justify-content:space-between; color:#bdbdbd; font-size:0.95rem; margin-bottom:8px; }
+        .stat-meta .progress { height:8px; background:#111618; border-radius:8px; overflow:hidden; }
+        .stat-meta .progress > i { display:block; height:100%; width:0%; background: linear-gradient(90deg, #ff2e63, #f725ff); transition: width 700ms ease; }
+
+        @media (max-width: 768px) {
+            #hero { flex-direction: column; gap: 15px; }
+            #hero-right { margin-top: 15px; }
+            nav { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+            nav a { margin:5px; }
+            #intro h1 { font-size:2rem; }
+            #intro p { font-size:1rem; }
+            #intro button { padding:10px 20px; font-size:0.9rem; }
+            #hero-left h1 { font-size:1.8rem; }
+            #hero-left p { font-size:1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NEW canvas background -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <div id="intro" role="dialog" aria-label="Introduction Screen">
+        <h1>UI & UX Designer</h1>
+        <p>Interface design for Roblox games — HUDs, menus, lobbies, and polish</p>
+        <button onclick="fadeOutIntro()">View UI/UX Design</button>
+    </div>
+    <header role="banner">
+        <div id="logo">Roblox UI/UX Portfolio</div>
+        <nav>
+            <a href="#projects" onclick="smoothScroll(event)">Projects</a>
+            <a href="#skills" onclick="smoothScroll(event)">Skills</a>
+            <a href="#testimonials" onclick="smoothScroll(event)">Testimonials</a>
+            <a href="#request" onclick="smoothScroll(event)">Request a Project</a>
+        </nav>
+    </header>
+
+    <section id="hero" aria-label="Introduction Section">
+        <div id="hero-left" class="card">
+            <h1>Roblox UI/UX Designer</h1>
+            <p>Crafting immersive interfaces for Roblox experiences</p>
+            <div class="discord-chip" onclick="copyDiscord()" role="button" aria-label="Copy Discord ID">Discord: THEKING_1139_48793</div>
+            <button id="download-btn" aria-label="Download Resume">Download Resume</button>
+        </div>
+        <div id="hero-right" class="card">
+
+            <!-- === ADDED: stat card (minimal insertion) === -->
+            <div class="stat-card" aria-label="Progress card showcase">
+                <div class="circle" aria-hidden="true">
+                    <div class="value">50%</div>
+                </div>
+                <div class="stat-meta">
+                    <div class="title">Codite</div>
+                    <div class="level-row"><span>Level 5</span><span>75 / 100</span></div>
+                    <div class="progress" aria-hidden="true"><i style="width:75%"></i></div>
+                    <div style="height:6px"></div>
+                    <div class="progress" aria-hidden="true"><i style="width:50%"></i></div>
+                </div>
+            </div>
+            <!-- === end added card === -->
+
+            <h3>Top Skills</h3>
+            <ul id="top-skills">
+                <li>Roblox Studio UI Design</li>
+                <li>HUD & Menu Systems</li>
+                <li>User Experience Optimization</li>
+                <li>Animation & Polish</li>
+            </ul>
+            <button class="contact-btn" onclick="copyDiscord()" aria-label="Copy Discord ID">Copy Discord</button>
+            <button class="contact-btn" onclick="scrollToProjects()" aria-label="Preview Projects">Preview Projects</button>
+        </div>
+    </section>
+
+    <section id="projects" aria-label="Projects Section">
+        <h2 class="card">Projects</h2>
+        <div id="projects-grid"></div>
+    </section>
+    <section id="skills" aria-label="Skills Section">
+        <h2 class="card">Skills</h2>
+        <div id="skills-grid"></div>
+    </section>
+    <section id="testimonials" aria-label="Testimonials Section">
+        <h2 class="card">Testimonials</h2>
+        <div id="testimonial-text" class="card"></div>
+        <div id="testimonial-author"></div>
+    </section>
+    <section id="request" aria-label="Project Request Form">
+        <h2 class="card">Request a Project</h2>
+        <form action="https://formspree.io/f/xanbgzyo" method="POST" class="card">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Your Name">
+            <label for="contact">Email/Discord:</label>
+            <input type="text" id="contact" name="contact" required placeholder="Email or Discord">
+            <label for="project-type">Project Type:</label>
+            <select id="project-type" name="project-type" required>
+                <option value="">Select Type</option>
+                <option value="HUD Design">HUD Design</option>
+                <option value="Menu System">Menu System</option>
+                <option value="Lobby UI">Lobby UI</option>
+                <option value="Full Game Polish">Full Game Polish</option>
+            </select>
+            <label for="budget">Budget (optional):</label>
+            <input type="text" id="budget" name="budget" placeholder="Your Budget">
+            <label for="details">Project Details:</label>
+            <textarea id="details" name="details" required rows="5" placeholder="Describe your project"></textarea>
+            <button type="submit" aria-label="Submit Project Request">Submit</button>
+        </form>
+    </section>
+    <footer role="contentinfo">
+        <p>Made with ☕ & pixels — Discord: THEKING_1139_48793</p>
+    </footer>
+
+    <div id="lightbox" role="dialog" aria-label="Project Slideshow">
+        <span id="close-lightbox" onclick="closeLightbox()" role="button" aria-label="Close Slideshow">&times;</span>
+        <div id="slideshow"></div>
+    </div>
+
+    <script>
+        /* -------------------------
+         * Canvas background script (your original one kept)
+         * Colorful blurred blobs + mouse sparkles
+         * ------------------------- */
+        (function() {
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d', { alpha: true });
+
+            let DPR = Math.max(1, window.devicePixelRatio || 1);
+            function resize() {
+                DPR = Math.max(1, window.devicePixelRatio || 1);
+                canvas.width = Math.floor(window.innerWidth * DPR);
+                canvas.height = Math.floor(window.innerHeight * DPR);
+                canvas.style.width = window.innerWidth + 'px';
+                canvas.style.height = window.innerHeight + 'px';
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+            }
+            window.addEventListener('resize', resize, { passive: true });
+            resize();
+
+            // Config
+            const BLOB_COUNT = Math.max(4, Math.round(Math.min(10, (window.innerWidth / 800) * 6))); // responsive count
+            const MAX_BLOB_RADIUS = Math.max(120, Math.min(380, Math.floor(Math.max(window.innerWidth, window.innerHeight) / 6)));
+            const MIN_BLOB_RADIUS = Math.max(80, Math.floor(MAX_BLOB_RADIUS / 3));
+            const SPARKLE_LIFETIME = 700; // ms
+            const SPARKLE_SPAWN_PER_MOVE = 6;
+
+            // Blobs
+            const blobs = [];
+            for (let i = 0; i < BLOB_COUNT; i++) {
+                blobs.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    r: MIN_BLOB_RADIUS + Math.random() * (MAX_BLOB_RADIUS - MIN_BLOB_RADIUS),
+                    hue: Math.random() * 360,
+                    hueVel: (Math.random() - 0.5) * 0.05
+                });
+            }
+
+            // Sparkles (spawn at mouse)
+            const sparkles = [];
+
+            let lastTime = performance.now();
+            let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2, moved: false };
+            let idleTimer = 0;
+
+            // Mouse / touch handlers
+            function onMove(e) {
+                const pos = e.touches ? e.touches[0] : e;
+                mouse.x = pos.clientX;
+                mouse.y = pos.clientY;
+                mouse.moved = true;
+                idleTimer = 0;
+
+                // spawn quick sparkles
+                for (let i = 0; i < SPARKLE_SPAWN_PER_MOVE; i++) {
+                    sparkles.push({
+                        x: mouse.x + (Math.random() - 0.5) * 60,
+                        y: mouse.y + (Math.random() - 0.5) * 60,
+                        vx: (Math.random() - 0.5) * 1.6,
+                        vy: (Math.random() - 0.5) * 1.6,
+                        life: SPARKLE_LIFETIME,
+                        hue: (Math.random() * 60) + (Math.random() < 0.5 ? 0 : 220) // two color ranges for contrast
+                    });
+                }
+            }
+            window.addEventListener('pointermove', onMove, { passive: true });
+            window.addEventListener('touchmove', onMove, { passive: true });
+
+            // Helper: draw blurred radial blob using gradient
+            function drawBlob(b) {
+                const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+                // create soft multi-stop gradient
+                const colorA = `hsla(${Math.floor(b.hue)}, 85%, 55%, 0.18)`;
+                const colorB = `hsla(${Math.floor((b.hue + 60) % 360)}, 80%, 45%, 0.12)`;
+                const colorC = `hsla(${Math.floor((b.hue + 180) % 360)}, 75%, 40%, 0.06)`;
+                g.addColorStop(0, colorA);
+                g.addColorStop(0.35, colorB);
+                g.addColorStop(0.7, colorC);
+                g.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.globalCompositeOperation = 'lighter';
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            function drawSparkle(s, dt) {
+                const t = s.life / SPARKLE_LIFETIME;
+                const size = 1 + 6 * (1 - t);
+                ctx.globalAlpha = Math.max(0, Math.min(1, t));
+                ctx.globalCompositeOperation = 'lighter';
+                ctx.fillStyle = `hsla(${Math.floor(s.hue)}, 90%, 60%, ${0.8 * t})`;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+
+            function animate(now) {
+                const dt = now - lastTime;
+                lastTime = now;
+
+                // fade background slightly
+                ctx.clearRect(0, 0, canvas.width / DPR, canvas.height / DPR);
+
+                // update & draw blobs
+                for (let b of blobs) {
+                    b.x += b.vx * (dt * 0.06);
+                    b.y += b.vy * (dt * 0.06);
+                    b.hue = (b.hue + b.hueVel * dt) % 360;
+
+                    // boundary wrap
+                    if (b.x < -b.r) b.x = window.innerWidth + b.r;
+                    if (b.x > window.innerWidth + b.r) b.x = -b.r;
+                    if (b.y < -b.r) b.y = window.innerHeight + b.r;
+                    if (b.y > window.innerHeight + b.r) b.y = -b.r;
+                }
+
+                // gentle attraction to mouse when moved recently
+                idleTimer += dt;
+                const attractStrength = Math.max(0, 1 - (idleTimer / 3000)); // reduces over 3s
+                if (mouse.moved) {
+                    for (let b of blobs) {
+                        const dx = mouse.x - b.x;
+                        const dy = mouse.y - b.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy) + 0.001;
+                        const force = (100 / dist) * 0.04 * attractStrength;
+                        b.vx += dx * 0.0006 * force;
+                        b.vy += dy * 0.0006 * force;
+                        // clamp velocity
+                        b.vx *= 0.995;
+                        b.vy *= 0.995;
+                    }
+                }
+
+                // draw blobs (order matters for color blending)
+                for (let i = 0; i < blobs.length; i++) {
+                    drawBlob(blobs[i]);
+                }
+
+                // update sparkles
+                for (let i = sparkles.length - 1; i >= 0; i--) {
+                    const s = sparkles[i];
+                    s.x += s.vx * (dt * 0.06);
+                    s.y += s.vy * (dt * 0.06);
+                    s.life -= dt;
+                    if (s.life <= 0) {
+                        sparkles.splice(i, 1);
+                    } else {
+                        drawSparkle(s, dt);
+                    }
+                }
+
+                // subtle overlay vignette for depth
+                ctx.globalCompositeOperation = 'source-over';
+                const w = canvas.width / DPR, h = canvas.height / DPR;
+                const vignette = ctx.createRadialGradient(w/2, h/2, Math.min(w,h)/5, w/2, h/2, Math.max(w,h)/1.1);
+                vignette.addColorStop(0, 'rgba(0,0,0,0)');
+                vignette.addColorStop(1, 'rgba(0,0,0,0.28)');
+                ctx.fillStyle = vignette;
+                ctx.fillRect(0, 0, w, h);
+
+                // small global tint to push palette toward your accent
+                ctx.globalCompositeOperation = 'overlay';
+                ctx.fillStyle = 'rgba(0, 110, 190, 0.02)'; // subtle teal overlay to tie to accent
+                ctx.fillRect(0, 0, w, h);
+                ctx.globalCompositeOperation = 'source-over';
+
+                // reset mouse moved state after a bit
+                if (mouse.moved) {
+                    mouse.moved = false;
+                    idleTimer = 0;
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            // reduce workload on small screens
+            if (window.innerWidth < 600) {
+                // make blobs fewer and sparklers lighter
+                while (blobs.length > 3) blobs.pop();
+            }
+
+            requestAnimationFrame(animate);
+        })();
+    </script>
+
+    <script>
+        // Keep your original app JS below (projects, lightbox, skills, testimonials, etc.)
+        function fadeOutIntro() {
+            document.getElementById('intro').classList.add('hidden');
+        }
+        function smoothScroll(event) {
+            event.preventDefault();
+            const targetId = event.target.getAttribute('href').substring(1);
+            document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+        }
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
+        function copyDiscord() {
+            navigator.clipboard.writeText('THEKING_1139_48793').then(() => {
+                alert('Discord ID copied!');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy Discord ID. Please try again.');
+            });
+        }
+        function scrollToProjects() {
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('projects-grid').focus();
+        }
+        // Projects array — now includes UI10 at the front
+        const projects = [
+    { name: 'UI10', images: ['images/UI10.png'] },
+    { name: 'HUD Design 1', images: ['images/UI1.png'] },
+    { name: 'Menu System', images: ['images/UI2.png'] },
+    { name: 'Lobby UI', images: ['images/UI3.png'] },
+    { name: 'Game Polish', images: ['images/UI4.png'] },
+    { name: 'HUD Design 2', images: ['images/UI5.png'] },
+    { name: 'Inventory Menu', images: ['images/UI6.png'] },
+    { name: 'Shop UI', images: ['images/UI7.png'] },
+    { name: 'Settings Panel', images: ['images/UI8.png'] },
+    { name: 'Codes', images: ['images/UI9.png'] }
+];
+
+        const projectsGrid = document.getElementById('projects-grid');
+        projects.forEach((project, index) => {
+            const card = document.createElement('div');
+            card.classList.add('project-card', 'card');
+            card.innerHTML = `
+                <img src="${project.images[0]}" alt="${project.name}">
+                <div class="project-caption">${project.name}</div>
+            `;
+            card.onclick = () => openLightbox(index);
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `View ${project.name} slideshow`);
+            card.tabIndex = 0;
+            projectsGrid.appendChild(card);
+        });
+        let currentProject = 0;
+        let currentSlide = 0;
+        let slideInterval;
+        function openLightbox(index) {
+            currentProject = index;
+            currentSlide = 0;
+            renderSlideshow();
+            document.getElementById('lightbox').classList.add('active');
+            startAutoSlide();
+            document.addEventListener('keydown', handleKeyboard);
+            document.getElementById('slideshow').addEventListener('pointerdown', pauseSlide);
+            document.getElementById('slideshow').focus();
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            clearInterval(slideInterval);
+            document.removeEventListener('keydown', handleKeyboard);
+        }
+        function renderSlideshow() {
+            const slideshow = document.getElementById('slideshow');
+            slideshow.innerHTML = `<img src="${projects[currentProject].images[currentSlide]}" alt="Slide ${currentSlide + 1} of ${projects[currentProject].name}">`;
+        }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % projects[currentProject].images.length;
+            renderSlideshow();
+        }
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + projects[currentProject].images.length) % projects[currentProject].images.length;
+            renderSlideshow();
+        }
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 3000);
+        }
+        function pauseSlide() {
+            clearInterval(slideInterval);
+        }
+        function handleKeyboard(e) {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'Escape') closeLightbox();
+        }
+        const skills = [
+            'Roblox Studio UI Design',
+            'HUD & Menu Systems',
+            'User Experience Optimization',
+            'Animation & Polish',
+            'Figma/Photoshop',
+            'Lua Scripting'
+        ];
+        const skillsGrid = document.getElementById('skills-grid');
+        skills.forEach(skill => {
+            const card = document.createElement('div');
+            card.classList.add('skill-card');
+            card.textContent = skill;
+            card.setAttribute('role', 'listitem');
+            skillsGrid.appendChild(card);
+        });
+        const testimonials = [
+            { text: "Amazing HUD designs that elevated our game!", author: "GameDev A" },
+            { text: "Professional menus, highly recommend.", author: "Client B" },
+            { text: "Polished UI made our lobby shine.", author: "Studio C" },
+            { text: "Creative and efficient UX solutions.", author: "Dev D" },
+            { text: "Transformed our Roblox experience.", author: "User E" },
+            { text: "Top-notch animation work.", author: "Client F" },
+            { text: "Responsive and user-friendly designs.", author: "Game G" },
+            { text: "Exceeded expectations every time.", author: "Dev H" },
+            { text: "Innovative interface ideas.", author: "Studio I" },
+            { text: "Smooth collaboration process.", author: "Client J" },
+            { text: "High-quality polish for our game.", author: "User K" },
+            { text: "Expert in Roblox UI tools.", author: "Dev L" },
+            { text: "Beautiful and functional menus.", author: "Client M" },
+            { text: "Optimized for all devices.", author: "Studio N" },
+            { text: "Creative problem-solving.", author: "Dev O" },
+            { text: "Delivered on time and budget.", author: "Client P" },
+            { text: "Stunning visual effects.", author: "User Q" },
+            { text: "Intuitive user flows.", author: "Dev R" },
+            { text: "Professional and reliable.", author: "Studio S" },
+            { text: "Elevated our game's appeal.", author: "Client T" },
+            { text: "Masterful UI craftsmanship.", author: "Dev U" }
+        ];
+        let currentTestimonial = 0;
+        const textElement = document.getElementById('testimonial-text');
+        const authorElement = document.getElementById('testimonial-author');
+        function showTestimonial() {
+            textElement.classList.remove('fade-in');
+            setTimeout(() => {
+                textElement.textContent = testimonials[currentTestimonial].text;
+                authorElement.textContent = `- ${testimonials[currentTestimonial].author}`;
+                textElement.classList.add('fade-in');
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            }, 800);
+        }
+        showTestimonial();
+        setInterval(showTestimonial, 4200);
+        document.getElementById('download-btn').onclick = () => {
+            alert('Downloading resume...');
+        };
+    </script>
+</body>
+</html>
