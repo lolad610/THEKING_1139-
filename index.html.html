@@ -368,7 +368,7 @@
             const MAX_BLOB_RADIUS = Math.max(120, Math.min(380, Math.floor(Math.max(window.innerWidth, window.innerHeight) / 6)));
             const MIN_BLOB_RADIUS = Math.max(80, Math.floor(MAX_BLOB_RADIUS / 3));
             const SPARKLE_LIFETIME = 700; // ms
-            const SPARKLE_SPAWN_PER_MOVE = 6;
+            const SPARKLE_SPAWN_PER_MOVE = 10;
 
             // Blobs
             const blobs = [];
@@ -564,9 +564,12 @@
             document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
             document.getElementById('projects-grid').focus();
         }
-        // Projects array — now includes UI10 at the front
-        const projects = [
+        // OLD: replace the whole projects = [ ... ] block with the new one below
+const projects = [
     { name: 'UI10', images: ['images/UI10.png'] },
+    { name: 'UI11', images: ['images/UI11.png'] },
+    { name: 'UI12', images: ['images/UI12.png'] },
+    { name: 'UI113', images: ['images/UI113.png'] },
     { name: 'HUD Design 1', images: ['images/UI1.png'] },
     { name: 'Menu System', images: ['images/UI2.png'] },
     { name: 'Lobby UI', images: ['images/UI3.png'] },
@@ -692,3 +695,4 @@
     </script>
 </body>
 </html>
+
