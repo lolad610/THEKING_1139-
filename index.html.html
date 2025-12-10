@@ -3,1341 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Premium Design</title>
     
-    <!-- Primary Meta Tags -->
-    <title>TheKing1139 - Professional Roblox UI/UX Designer | HUD, Menu & Game Interface Design</title>
-    <meta name="title" content="TheKing1139 - Professional Roblox UI/UX Designer | HUD, Menu & Game Interface Design">
-    <meta name="description" content="Expert Roblox UI/UX designer specializing in immersive HUD designs, menu systems, lobby interfaces, and game polish. View my portfolio of stunning Roblox game interfaces.">
-    <meta name="keywords" content="Roblox UI designer, Roblox UX designer, game interface design, HUD design, menu systems, lobby UI, Roblox Studio, game UI polish, TheKing1139, Roblox game design">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="TheKing1139">
-    <link rel="canonical" href="https://yourdomain.com/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/">
-    <meta property="og:title" content="TheKing1139 - Professional Roblox UI/UX Designer">
-    <meta property="og:description" content="Expert Roblox UI/UX designer crafting immersive interfaces for game experiences. Specializing in HUD, menus, lobbies, and game polish.">
-    <meta property="og:image" content="https://yourdomain.com/images/UI1.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourdomain.com/">
-    <meta property="twitter:title" content="TheKing1139 - Professional Roblox UI/UX Designer">
-    <meta property="twitter:description" content="Expert Roblox UI/UX designer crafting immersive interfaces for game experiences.">
-    <meta property="twitter:image" content="https://yourdomain.com/images/UI1.png">
-    
-    <!-- Sitemap Reference -->
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-    
-    <!-- Fonts -->
+    <!-- Google Fonts: Inter & Playfair Display for Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "TheKing1139",
-      "jobTitle": "Roblox UI/UX Designer",
-      "description": "Professional Roblox interface designer specializing in HUD, menu systems, and game UI polish",
-      "url": "https://yourdomain.com",
-      "sameAs": [
-        "https://discord.com/users/THEKING_1139_48793"
-      ],
-      "knowsAbout": ["UI Design", "UX Design", "Roblox Studio", "Game Interface Design", "HUD Design", "Menu Systems"],
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "UI/UX Designer",
-        "occupationLocation": {
-          "@type": "Place",
-          "name": "Remote"
-        }
-      }
-    }
-    </script>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "name": "Roblox UI/UX Design Portfolio",
-      "author": {
-        "@type": "Person",
-        "name": "TheKing1139"
-      },
-      "description": "Portfolio showcasing professional Roblox game interface designs including HUDs, menus, lobbies, and polish work",
-      "genre": "Game Design",
-      "keywords": "Roblox UI, game interface, HUD design, menu systems"
-    }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 
     <style>
+        /* --- CSS RESET & VARIABLES --- */
         :root {
-            --bg-color: #060b13;
-            --main-color: #f0f0f0;
-            --accent-primary: #00d4ff;
-            --accent-secondary: #00ffaa;
-            --card-bg: #0d1620;
-            --card-border: #1a2838;
-            --transition-speed: 0.4s;
-            --radius: 16px;
-            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 16px 48px rgba(0, 212, 255, 0.2);
+            --bg-color: #0a0a0a;
+            --surface-color: #161616;
+            --text-main: #f3f3f3;
+            --text-muted: #888888;
+            --accent: #6366f1; /* Modern Indigo */
+            --accent-glow: rgba(99, 102, 241, 0.4);
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
         }
-        
+
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--main-color);
             background-color: var(--bg-color);
-            overflow-x: hidden;
+            color: var(--text-main);
+            font-family: var(--font-sans);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
-        /* Animated Canvas Background */
-        #bg-canvas {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-serif);
+        }
+
+        .section-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
             display: block;
+            font-weight: 600;
         }
 
-        /* Intro Screen */
-        #intro {
+        p { color: var(--text-muted); font-size: 1.05rem; }
+
+        /* --- NAVIGATION --- */
+        header {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--bg-color) 0%, #0a1520 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-            text-align: center;
-        }
-        
-        #intro.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        #intro h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin: 0 0 1rem;
-            background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { filter: hue-rotate(0deg) brightness(1); }
-            50% { filter: hue-rotate(15deg) brightness(1.2); }
-        }
-        
-        #intro p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            margin: 0 0 2rem;
-            color: #9ca3af;
-            font-weight: 300;
-        }
-        
-        #intro button {
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border: none;
-            border-radius: 50px;
-            color: var(--bg-color);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
-        }
-        
-        #intro button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 32px rgba(0, 212, 255, 0.5);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            transition: var(--transition);
         }
 
-        /* Header/Navigation */
-        header {
-            position: sticky;
-            top: 0;
-            background: rgba(6, 11, 19, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--card-border);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        header.scrolled {
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        
-        #logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
+
         nav {
             display: flex;
-            gap: 2rem;
+            justify-content: space-between;
             align-items: center;
         }
-        
-        nav a {
-            color: var(--main-color);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all var(--transition-speed) ease;
-            position: relative;
-            padding: 8px 0;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
         }
-        
-        nav a::after {
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            transition: width var(--transition-speed) ease;
-        }
-        
-        nav a:hover {
-            color: var(--accent-primary);
-        }
-        
-        nav a:hover::after {
-            width: 100%;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
         }
 
-        /* Main Container */
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
 
-        /* Section Styling */
-        section {
-            padding: 80px 0;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-            background: linear-gradient(120deg, var(--accent-primary), var(--main-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Card Styling */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-soft);
-            transition: all var(--transition-speed) ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .card:hover::before {
-            left: 100%;
-        }
-        
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--accent-primary);
-        }
-
-        /* Hero Section */
+        /* --- HERO SECTION --- */
         #hero {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            padding: 40px 0 80px;
-        }
-        
-        #hero-left h1 {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            position: relative;
-        }
-        
-        .name-highlight {
-            background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
-        }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-        }
-        
-        #hero-left p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: #9ca3af;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-        
-        .discord-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--card-bg), #152030);
-            border: 1px solid var(--card-border);
-            padding: 12px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        
-        .discord-chip:hover {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: var(--bg-color);
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
-        }
-        
-        #download-btn {
-            padding: 14px 32px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border: none;
-            border-radius: 50px;
-            color: var(--bg-color);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
-            margin-top: 1rem;
-        }
-        
-        #download-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 32px rgba(0, 212, 255, 0.5);
-        }
-
-        /* Stats Card */
-        .stat-card {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 255, 170, 0.05));
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-        
-        .stat-card .circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: conic-gradient(var(--accent-secondary) 0% 50%, var(--accent-primary) 50% 100%);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
-            animation: rotate 8s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .stat-card .circle .value {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--accent-primary);
-        }
-        
-        .stat-meta {
-            flex: 1;
-        }
-        
-        .stat-meta .title {
-            color: var(--accent-primary);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-meta .level-row {
-            display: flex;
-            justify-content: space-between;
-            color: #9ca3af;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-meta .progress {
-            height: 8px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-meta .progress i {
-            display: block;
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 8px;
-            transition: width 1s ease;
-            box-shadow: 0 0 10px var(--accent-primary);
-        }
-
-        /* Top Skills */
-        #hero-right h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-primary);
-        }
-        
-        #top-skills {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-        
-        #top-skills li {
-            padding: 14px 18px;
-            margin-bottom: 0.8rem;
-            background: linear-gradient(135deg, var(--card-bg), #0f1a25);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            transition: all var(--transition-speed) ease;
-            cursor: default;
-        }
-        
-        #top-skills li:hover {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: var(--bg-color);
-            transform: translateX(8px);
-            box-shadow: 0 4px 16px rgba(0, 212, 255, 0.4);
-        }
-        
-        .contact-btn {
-            display: block;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--card-bg), #152030);
-            border: 1px solid var(--accent-primary);
-            border-radius: 12px;
-            color: var(--accent-primary);
             text-align: center;
-            cursor: pointer;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            transition: all var(--transition-speed) ease;
-        }
-        
-        .contact-btn:hover {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: var(--bg-color);
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+            position: relative;
+            padding: 0 1rem;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0a0a0a 100%);
         }
 
-        /* Projects Grid */
-        #projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            cursor: pointer;
-            overflow: hidden;
-            border-radius: var(--radius);
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-soft);
-            transition: all var(--transition-speed) ease;
-            position: relative;
-        }
-        
-        .project-card::after {
+        /* Abstract background glow */
+        #hero::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 170, 0.2));
-            opacity: 0;
-            transition: opacity var(--transition-speed) ease;
-        }
-        
-        .project-card:hover::after {
-            opacity: 1;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--accent-primary);
-        }
-        
-        .project-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-            transition: all 0.5s ease;
-        }
-        
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
-        
-        .project-caption {
-            padding: 1.2rem;
-            background: var(--card-bg);
-            font-weight: 600;
-            color: var(--main-color);
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Skills Grid */
-        #skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .skill-card {
-            padding: 2rem 1rem;
-            text-align: center;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            font-weight: 600;
-            transition: all var(--transition-speed) ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            transform: translate(-50%, -50%);
-            transition: width 0.5s ease, height 0.5s ease;
-            z-index: 0;
-        }
-        
-        .skill-card:hover::before {
             width: 300px;
             height: 300px;
-        }
-        
-        .skill-card:hover {
-            transform: scale(1.1);
-            color: var(--bg-color);
-            box-shadow: 0 12px 32px rgba(0, 212, 255, 0.5);
-            border-color: transparent;
-        }
-        
-        .skill-card span {
-            position: relative;
-            z-index: 1;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: 0.2;
+            border-radius: 50%;
+            top: 20%;
+            left: 20%;
+            animation: float 10s infinite ease-in-out;
+            z-index: 0;
         }
 
-        /* Testimonials */
-        #testimonials {
-            text-align: center;
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
         }
-        
-        #testimonial-text {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            font-style: italic;
-            padding: 3rem;
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing-container {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            min-height: 1.5em;
+            margin-bottom: 2.5rem;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: var(--accent);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--text-main);
+            color: var(--bg-color);
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 8rem 10%;
+        }
+
+        /* Reveal Animation Classes */
+        .reveal {
             opacity: 0;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transform: translateY(20px);
-            min-height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--card-bg), #0f1a25);
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
-        
-        #testimonial-text.fade-in {
+
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
-        #testimonial-author {
-            margin-top: 1rem;
-            font-weight: 600;
-            color: var(--accent-primary);
-            font-size: 1.1rem;
-        }
 
-        /* Form Styling */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        label {
-            font-size: 0.95rem;
-            color: var(--main-color);
-            font-weight: 500;
-            margin-bottom: -0.8rem;
-        }
-        
-        input, select, textarea {
-            padding: 16px 20px;
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            background: var(--card-bg);
-            color: var(--main-color);
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            transition: all var(--transition-speed) ease;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-            background: #0f1a25;
-            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
-        }
-        
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        
-        button[type="submit"] {
-            padding: 16px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border: none;
-            border-radius: 12px;
-            color: var(--bg-color);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
-        }
-        
-        button[type="submit"]:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(0, 212, 255, 0.5);
-        }
-
-        /* Lightbox */
-        #lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
-            justify-content: center;
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
-            z-index: 2000;
-            backdrop-filter: blur(10px);
         }
-        
-        #lightbox.active {
-            display: flex;
-        }
-        
-        #slideshow {
-            max-width: 90%;
-            max-height: 90%;
+
+        .about-img-wrapper {
             position: relative;
+            border-radius: 12px;
+            overflow: hidden;
         }
         
-        #slideshow img {
+        /* User Image Placeholder */
+        .about-img-wrapper img {
             width: 100%;
             height: auto;
-            border-radius: var(--radius);
-            box-shadow: 0 0 60px rgba(0, 212, 255, 0.6);
+            filter: grayscale(100%);
+            transition: var(--transition);
         }
-        
-        #close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2.5rem;
-            color: var(--main-color);
-            cursor: pointer;
+
+        .about-img-wrapper:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            group: cursor;
+        }
+
+        .project-img-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-img-container img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info span {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            text-align: center;
+            background: linear-gradient(to top, #0f0f0f, #0a0a0a);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            font-size: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 50%;
             width: 50px;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            transition: all var(--transition-speed) ease;
-        }
-        
-        #close-lightbox:hover {
-            color: var(--accent-primary);
-            background: rgba(0, 212, 255, 0.2);
-            transform: rotate(90deg);
         }
 
-        /* Footer */
+        .social-links a:hover {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: white;
+        }
+
         footer {
-            text-align: center;
             padding: 2rem;
-            background: rgba(6, 11, 19, 0.9);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--card-border);
-            color: #9ca3af;
-            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Responsive Design */
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 15px 5%;
-            }
-            
-            nav {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav a {
-                font-size: 0.9rem;
-            }
-            
-            #hero {
-                grid-template-columns: 1fr;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            #projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            #skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 1rem;
-            }
+            .hero-title { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Simplified for demo, ideally hamburger menu */
+            section { padding: 5rem 5%; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background Canvas -->
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-    <!-- Intro Screen -->
-    <div id="intro" role="dialog" aria-label="Welcome Screen">
-        <h1>UI & UX Designer</h1>
-        <p>Interface design for Roblox games — HUDs, menus, lobbies, and polish</p>
-        <button onclick="fadeOutIntro()">View UI/UX Design</button>
-    </div>
-
-    <!-- Header Navigation -->
-    <header role="banner">
-        <div id="logo">Roblox UI/UX Portfolio</div>
-        <nav role="navigation" aria-label="Main Navigation">
-            <a href="#projects" onclick="smoothScroll(event)">Projects</a>
-            <a href="#skills" onclick="smoothScroll(event)">Skills</a>
-            <a href="#testimonials" onclick="smoothScroll(event)">Testimonials</a>
-            <a href="#request" onclick="smoothScroll(event)">Request a Project</a>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">PORTFOLIO.</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" aria-labelledby="hero-heading">
-            <div id="hero-left" class="card">
-                <h1 id="hero-heading">
-                    <span class="name-highlight">TheKing1139</span><br>
-                    Roblox UI/UX Designer
-                </h1>
-                <p>Crafting immersive interfaces for Roblox experiences</p>
-                <div class="discord-chip" onclick="copyDiscord()" role="button" tabindex="0" aria-label="Copy Discord username">
-                    Discord: THEKING_1139_48793
-                </div>
-                <button id="download-btn" aria-label="Download Resume">Download Resume</button>
-            </div>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <span class="section-subtitle reveal">Welcome</span>
+            <h1 class="hero-title reveal">I Create <br> <span>Digital Experiences.</span></h1>
             
-            <div id="hero-right" class="card">
-                <!-- Stats Card -->
-                <div class="stat-card" aria-label="Skills progress showcase">
-                    <div class="circle" aria-hidden="true">
-                        <div class="value">50%</div>
-                    </div>
-                    <div class="stat-meta">
-                        <div class="title">Codite</div>
-                        <div class="level-row">
-                            <span>Level 5</span>
-                            <span>75 / 100</span>
-                        </div>
-                        <div class="progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                            <i style="width:75%"></i>
-                        </div>
-                        <div style="height:6px"></div>
-                        <div class="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                            <i style="width:50%"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Top Skills</h3>
-                <ul id="top-skills" role="list">
-                    <li>Roblox Studio UI Design</li>
-                    <li>HUD & Menu Systems</li>
-                    <li>User Experience Optimization</li>
-                    <li>Animation & Polish</li>
-                </ul>
-                <button class="contact-btn" onclick="copyDiscord()" aria-label="Copy Discord username">Copy Discord</button>
-                <button class="contact-btn" onclick="scrollToProjects()" aria-label="Navigate to projects">Preview Projects</button>
+            <div class="typing-container reveal">
+                I am a <span id="typing-text"></span><span class="cursor"></span>
             </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="projects" aria-labelledby="projects-heading">
-            <h2 id="projects-heading">Projects</h2>
-            <div id="projects-grid" role="list"></div>
-        </section>
+            <a href="#portfolio" class="btn reveal">View My Work</a>
+        </div>
+    </section>
 
-        <!-- Skills Section -->
-        <section id="skills" aria-labelledby="skills-heading">
-            <h2 id="skills-heading">Skills</h2>
-            <div id="skills-grid" role="list"></div>
-        </section>
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-img-wrapper reveal">
+                <!-- REPLACE WITH YOUR IMAGE -->
+                <img src="your-profile-image.jpg" alt="Profile Picture"> 
+            </div>
+            <div class="about-text reveal">
+                <span class="section-subtitle">About Me</span>
+                <h2>Design. Build. Improve.</h2>
+                <p>
+                    I focus on creating high-end, smooth, and user-centric digital products. 
+                    With a deep understanding of modern web technologies and a keen eye for aesthetics, 
+                    I transform complex problems into elegant solutions.
+                </p>
+                <br>
+                <p>
+                    Whether it's a website, an application, or a brand identity, I bring 
+                    passion and precision to every project.
+                </p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" aria-labelledby="testimonials-heading">
-            <h2 id="testimonials-heading">Testimonials</h2>
-            <div id="testimonial-text" class="card" role="article" aria-live="polite"></div>
-            <div id="testimonial-author"></div>
-        </section>
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <span class="section-subtitle reveal">My Portfolio</span>
+        <h2 class="reveal">Selected Works</h2>
+        
+        <div class="portfolio-grid">
+            
+            <!-- Project 1 -->
+            <a href="#" class="project-card reveal">
+                <div class="project-img-container">
+                    <!-- REPLACE WITH YOUR IMAGE -->
+                    <img src="project1.jpg" alt="Project One">
+                </div>
+                <div class="project-info">
+                    <span>Development</span>
+                    <h3>Project Name One</h3>
+                </div>
+            </a>
 
-        <!-- Request Form Section -->
-        <section id="request" aria-labelledby="request-heading">
-            <h2 id="request-heading">Request a Project</h2>
-            <form action="https://formspree.io/f/xanbgzyo" method="POST" class="card" aria-label="Project request form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required placeholder="Your Name" aria-required="true">
-                
-                <label for="contact">Email/Discord:</label>
-                <input type="text" id="contact" name="contact" required placeholder="Email or Discord" aria-required="true">
-                
-                <label for="project-type">Project Type:</label>
-                <select id="project-type" name="project-type" required aria-required="true">
-                    <option value="">Select Type</option>
-                    <option value="HUD Design">HUD Design</option>
-                    <option value="Menu System">Menu System</option>
-                    <option value="Lobby UI">Lobby UI</option>
-                    <option value="Full Game Polish">Full Game Polish</option>
-                </select>
-                
-                <label for="budget">Budget (optional):</label>
-                <input type="text" id="budget" name="budget" placeholder="Your Budget">
-                
-                <label for="details">Project Details:</label>
-                <textarea id="details" name="details" required rows="5" placeholder="Describe your project" aria-required="true"></textarea>
-                
-                <button type="submit" aria-label="Submit project request">Submit</button>
-            </form>
-        </section>
-    </main>
+            <!-- Project 2 -->
+            <a href="#" class="project-card reveal">
+                <div class="project-img-container">
+                    <!-- REPLACE WITH YOUR IMAGE -->
+                    <img src="project2.jpg" alt="Project Two">
+                </div>
+                <div class="project-info">
+                    <span>Design</span>
+                    <h3>Project Name Two</h3>
+                </div>
+            </a>
 
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <p>Made with ☕ & pixels — Discord: THEKING_1139_48793</p>
+            <!-- Project 3 -->
+            <a href="#" class="project-card reveal">
+                <div class="project-img-container">
+                    <!-- REPLACE WITH YOUR IMAGE -->
+                    <img src="project3.jpg" alt="Project Three">
+                </div>
+                <div class="project-info">
+                    <span>Branding</span>
+                    <h3>Project Name Three</h3>
+                </div>
+            </a>
+
+            <!-- Project 4 -->
+            <a href="#" class="project-card reveal">
+                <div class="project-img-container">
+                    <!-- REPLACE WITH YOUR IMAGE -->
+                    <img src="project4.jpg" alt="Project Four">
+                </div>
+                <div class="project-info">
+                    <span>Marketing</span>
+                    <h3>Project Name Four</h3>
+                </div>
+            </a>
+
+            <!-- Add more project cards as needed -->
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container reveal">
+            <span class="section-subtitle">Get in Touch</span>
+            <h2>Let's work together.</h2>
+            <p>Have a project in mind? Let's build something amazing.</p>
+            
+            <div class="social-links">
+                <a href="#">Li</a> <!-- LinkedIn -->
+                <a href="#">Gh</a> <!-- GitHub -->
+                <a href="#">Tw</a> <!-- Twitter -->
+                <a href="#">Ma</a> <!-- Mail -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Your Name. All Rights Reserved.</p>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Project image viewer">
-        <span id="close-lightbox" onclick="closeLightbox()" role="button" tabindex="0" aria-label="Close viewer">&times;</span>
-        <div id="slideshow"></div>
-    </div>
-
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        /* ========================================
-         * Canvas Background Animation
-         * Colorful blurred blobs + mouse sparkles
-         * ======================================== */
-        (function() {
-            const canvas = document.getElementById('bg-canvas');
-            const ctx = canvas.getContext('2d', { alpha: true });
+        // 1. Navigation Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
-            let DPR = Math.max(1, window.devicePixelRatio || 1);
+        // 2. Typing Effect
+        const textElement = document.getElementById('typing-text');
+        const words = ["Developer", "Designer", "Creator", "Freelancer"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typeEffect() {
+            const currentWord = words[wordIndex];
             
-            function resize() {
-                DPR = Math.max(1, window.devicePixelRatio || 1);
-                canvas.width = Math.floor(window.innerWidth * DPR);
-                canvas.height = Math.floor(window.innerHeight * DPR);
-                canvas.style.width = window.innerWidth + 'px';
-                canvas.style.height = window.innerHeight + 'px';
-                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-            }
-            
-            window.addEventListener('resize', resize, { passive: true });
-            resize();
-
-            // Configuration
-            const BLOB_COUNT = Math.max(4, Math.round(Math.min(10, (window.innerWidth / 800) * 6)));
-            const MAX_BLOB_RADIUS = Math.max(120, Math.min(380, Math.floor(Math.max(window.innerWidth, window.innerHeight) / 6)));
-            const MIN_BLOB_RADIUS = Math.max(80, Math.floor(MAX_BLOB_RADIUS / 3));
-            const SPARKLE_LIFETIME = 700;
-            const SPARKLE_SPAWN_PER_MOVE = 10;
-
-            // Create blobs
-            const blobs = [];
-            for (let i = 0; i < BLOB_COUNT; i++) {
-                blobs.push({
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                    r: MIN_BLOB_RADIUS + Math.random() * (MAX_BLOB_RADIUS - MIN_BLOB_RADIUS),
-                    hue: Math.random() * 360,
-                    hueVel: (Math.random() - 0.5) * 0.05
-                });
+            if (isDeleting) {
+                textElement.textContent = currentWord.substring(0, charIndex--);
+            } else {
+                textElement.textContent = currentWord.substring(0, charIndex++);
             }
 
-            // Sparkles array
-            const sparkles = [];
+            let typeSpeed = isDeleting ? 100 : 200;
 
-            let lastTime = performance.now();
-            let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2, moved: false };
-            let idleTimer = 0;
-
-            // Mouse/touch handlers
-            function onMove(e) {
-                const pos = e.touches ? e.touches[0] : e;
-                mouse.x = pos.clientX;
-                mouse.y = pos.clientY;
-                mouse.moved = true;
-                idleTimer = 0;
-
-                // Spawn sparkles
-                for (let i = 0; i < SPARKLE_SPAWN_PER_MOVE; i++) {
-                    sparkles.push({
-                        x: mouse.x + (Math.random() - 0.5) * 60,
-                        y: mouse.y + (Math.random() - 0.5) * 60,
-                        vx: (Math.random() - 0.5) * 1.6,
-                        vy: (Math.random() - 0.5) * 1.6,
-                        life: SPARKLE_LIFETIME,
-                        hue: (Math.random() * 60) + (Math.random() < 0.5 ? 0 : 220)
-                    });
-                }
-            }
-            
-            window.addEventListener('pointermove', onMove, { passive: true });
-            window.addEventListener('touchmove', onMove, { passive: true });
-
-            // Draw blob with gradient
-            function drawBlob(b) {
-                const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
-                const colorA = `hsla(${Math.floor(b.hue)}, 85%, 55%, 0.18)`;
-                const colorB = `hsla(${Math.floor((b.hue + 60) % 360)}, 80%, 45%, 0.12)`;
-                const colorC = `hsla(${Math.floor((b.hue + 180) % 360)}, 75%, 40%, 0.06)`;
-                g.addColorStop(0, colorA);
-                g.addColorStop(0.35, colorB);
-                g.addColorStop(0.7, colorC);
-                g.addColorStop(1, 'rgba(0,0,0,0)');
-                ctx.globalCompositeOperation = 'lighter';
-                ctx.fillStyle = g;
-                ctx.beginPath();
-                ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-                ctx.fill();
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
             }
 
-            // Draw sparkle
-            function drawSparkle(s) {
-                const t = s.life / SPARKLE_LIFETIME;
-                const size = 1 + 6 * (1 - t);
-                ctx.globalAlpha = Math.max(0, Math.min(1, t));
-                ctx.globalCompositeOperation = 'lighter';
-                ctx.fillStyle = `hsla(${Math.floor(s.hue)}, 90%, 60%, ${0.8 * t})`;
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.globalAlpha = 1;
-            }
-
-            // Animation loop
-            function animate(now) {
-                const dt = now - lastTime;
-                lastTime = now;
-
-                ctx.clearRect(0, 0, canvas.width / DPR, canvas.height / DPR);
-
-                // Update and draw blobs
-                for (let b of blobs) {
-                    b.x += b.vx * (dt * 0.06);
-                    b.y += b.vy * (dt * 0.06);
-                    b.hue = (b.hue + b.hueVel * dt) % 360;
-
-                    // Wrap around screen
-                    if (b.x < -b.r) b.x = window.innerWidth + b.r;
-                    if (b.x > window.innerWidth + b.r) b.x = -b.r;
-                    if (b.y < -b.r) b.y = window.innerHeight + b.r;
-                    if (b.y > window.innerHeight + b.r) b.y = -b.r;
-                }
-
-                // Mouse attraction
-                idleTimer += dt;
-                const attractStrength = Math.max(0, 1 - (idleTimer / 3000));
-                if (mouse.moved) {
-                    for (let b of blobs) {
-                        const dx = mouse.x - b.x;
-                        const dy = mouse.y - b.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy) + 0.001;
-                        const force = (100 / dist) * 0.04 * attractStrength;
-                        b.vx += dx * 0.0006 * force;
-                        b.vy += dy * 0.0006 * force;
-                        b.vx *= 0.995;
-                        b.vy *= 0.995;
-                    }
-                }
-
-                // Draw blobs
-                for (let b of blobs) {
-                    drawBlob(b);
-                }
-
-                // Update sparkles
-                for (let i = sparkles.length - 1; i >= 0; i--) {
-                    const s = sparkles[i];
-                    s.x += s.vx * (dt * 0.06);
-                    s.y += s.vy * (dt * 0.06);
-                    s.life -= dt;
-                    if (s.life <= 0) {
-                        sparkles.splice(i, 1);
-                    } else {
-                        drawSparkle(s);
-                    }
-                }
-
-                // Vignette overlay
-                ctx.globalCompositeOperation = 'source-over';
-                const w = canvas.width / DPR, h = canvas.height / DPR;
-                const vignette = ctx.createRadialGradient(w/2, h/2, Math.min(w,h)/5, w/2, h/2, Math.max(w,h)/1.1);
-                vignette.addColorStop(0, 'rgba(0,0,0,0)');
-                vignette.addColorStop(1, 'rgba(0,0,0,0.28)');
-                ctx.fillStyle = vignette;
-                ctx.fillRect(0, 0, w, h);
-
-                // Subtle tint overlay
-                ctx.globalCompositeOperation = 'overlay';
-                ctx.fillStyle = 'rgba(0, 110, 190, 0.02)';
-                ctx.fillRect(0, 0, w, h);
-                ctx.globalCompositeOperation = 'source-over';
-
-                if (mouse.moved) {
-                    mouse.moved = false;
-                    idleTimer = 0;
-                }
-
-                requestAnimationFrame(animate);
-            }
-
-            // Optimize for mobile
-            if (window.innerWidth < 600) {
-                while (blobs.length > 3) blobs.pop();
-            }
-
-            requestAnimationFrame(animate);
-        })();
-
-        /* ========================================
-         * Application Logic
-         * ======================================== */
-
-        // Fade out intro screen
-        function fadeOutIntro() {
-            document.getElementById('intro').classList.add('hidden');
+            setTimeout(typeEffect, typeSpeed);
         }
+        
+        document.addEventListener('DOMContentLoaded', typeEffect);
 
-        // Smooth scroll navigation
-        function smoothScroll(event) {
-            event.preventDefault();
-            const targetId = event.target.getAttribute('href').substring(1);
-            document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-        }
+        // 3. Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
 
-        // Intersection Observer for fade-in animations
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing once revealed
+                    // observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
-        
-        sections.forEach(section => observer.observe(section));
-
-        // Copy Discord ID
-        function copyDiscord() {
-            navigator.clipboard.writeText('THEKING_1139_48793').then(() => {
-                alert('Discord ID copied!');
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-                alert('Failed to copy Discord ID. Please try again.');
-            });
-        }
-
-        // Scroll to projects
-        function scrollToProjects() {
-            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Projects data
-        const projects = [
-            { name: 'UI10 - Modern interface design showcasing clean HUD elements', images: ['images/UI10.png'] },
-            { name: 'UI11 - Advanced menu system with polished animations', images: ['images/UI11.png'] },
-            { name: 'UI12 - Lobby interface with user-friendly navigation', images: ['images/UI12.png'] },
-            { name: 'UI13 - Inventory system with intuitive layout', images: ['images/UI13.png'] },
-            { name: 'UI14 - Settings panel with organized controls', images: ['images/UI14.png'] },
-            { name: 'HUD Design 1 - Immersive heads-up display for action games', images: ['images/UI1.png'] },
-            { name: 'Menu System - Complete navigation menu with smooth transitions', images: ['images/UI2.png'] },
-            { name: 'Lobby UI - Welcoming lobby interface with player information', images: ['images/UI3.png'] },
-            { name: 'Game Polish - Professional UI polish and refinement work', images: ['images/UI4.png'] },
-            { name: 'HUD Design 2 - Minimalist HUD for enhanced gameplay experience', images: ['images/UI5.png'] },
-            { name: 'Inventory Menu - Organized inventory system with filtering options', images: ['images/UI6.png'] },
-            { name: 'Shop UI - E-commerce interface for in-game purchases', images: ['images/UI7.png'] },
-            { name: 'Settings Panel - Comprehensive settings interface with accessibility options', images: ['images/UI8.png'] },
-            { name: 'Codes - Redemption system interface for promotional codes', images: ['images/UI9.png'] }
-        ];
-
-        // Render projects
-        const projectsGrid = document.getElementById('projects-grid');
-        projects.forEach((project, index) => {
-            const card = document.createElement('div');
-            card.classList.add('project-card');
-            card.innerHTML = `
-                <img src="${project.images[0]}" alt="${project.name}" loading="lazy">
-                <div class="project-caption">${project.name.split(' - ')[0]}</div>
-            `;
-            card.onclick = () => openLightbox(index);
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', `View ${project.name} in detail`);
-            card.tabIndex = 0;
-            card.onkeypress = (e) => {
-                if (e.key === 'Enter') openLightbox(index);
-            };
-            projectsGrid.appendChild(card);
+        }, {
+            threshold: 0.15, // Trigger when 15% visible
+            rootMargin: "0px 0px -50px 0px"
         });
 
-        // Lightbox functionality
-        let currentProject = 0;
-        let currentSlide = 0;
-        let slideInterval;
+        revealElements.forEach(el => revealObserver.observe(el));
 
-        function openLightbox(index) {
-            currentProject = index;
-            currentSlide = 0;
-            renderSlideshow();
-            document.getElementById('lightbox').classList.add('active');
-            startAutoSlide();
-            document.addEventListener('keydown', handleKeyboard);
-            document.getElementById('slideshow').focus();
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            clearInterval(slideInterval);
-            document.removeEventListener('keydown', handleKeyboard);
-        }
-
-        function renderSlideshow() {
-            const slideshow = document.getElementById('slideshow');
-            slideshow.innerHTML = `<img src="${projects[currentProject].images[currentSlide]}" alt="${projects[currentProject].name}" loading="lazy">`;
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % projects[currentProject].images.length;
-            renderSlideshow();
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + projects[currentProject].images.length) % projects[currentProject].images.length;
-            renderSlideshow();
-        }
-
-        function startAutoSlide() {
-            slideInterval = setInterval(nextSlide, 3000);
-        }
-
-        function handleKeyboard(e) {
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === 'ArrowLeft') prevSlide();
-            if (e.key === 'Escape') closeLightbox();
-        }
-
-        // Skills data
-        const skills = [
-            'Roblox Studio UI Design',
-            'HUD & Menu Systems',
-            'User Experience Optimization',
-            'Animation & Polish',
-            'Figma/Photoshop',
-            'Lua Scripting'
-        ];
-
-        // Render skills
-        const skillsGrid = document.getElementById('skills-grid');
-        skills.forEach(skill => {
-            const card = document.createElement('div');
-            card.classList.add('skill-card');
-            card.innerHTML = `<span>${skill}</span>`;
-            card.setAttribute('role', 'listitem');
-            skillsGrid.appendChild(card);
-        });
-
-        // Testimonials data
-        const testimonials = [
-            { text: "Amazing HUD designs that elevated our game!", author: "GameDev A" },
-            { text: "Professional menus, highly recommend.", author: "Client B" },
-            { text: "Polished UI made our lobby shine.", author: "Studio C" },
-            { text: "Creative and efficient UX solutions.", author: "Dev D" },
-            { text: "Transformed our Roblox experience.", author: "User E" },
-            { text: "Top-notch animation work.", author: "Client F" },
-            { text: "Responsive and user-friendly designs.", author: "Game G" },
-            { text: "Exceeded expectations every time.", author: "Dev H" },
-            { text: "Innovative interface ideas.", author: "Studio I" },
-            { text: "Smooth collaboration process.", author: "Client J" },
-            { text: "High-quality polish for our game.", author: "User K" },
-            { text: "Expert in Roblox UI tools.", author: "Dev L" },
-            { text: "Beautiful and functional menus.", author: "Client M" },
-            { text: "Optimized for all devices.", author: "Studio N" },
-            { text: "Creative problem-solving.", author: "Dev O" },
-            { text: "Delivered on time and budget.", author: "Client P" },
-            { text: "Stunning visual effects.", author: "User Q" },
-            { text: "Intuitive user flows.", author: "Dev R" },
-            { text: "Professional and reliable.", author: "Studio S" },
-            { text: "Elevated our game's appeal.", author: "Client T" },
-            { text: "Masterful UI craftsmanship.", author: "Dev U" }
-        ];
-
-        // Testimonial rotation
-        let currentTestimonial = 0;
-        const textElement = document.getElementById('testimonial-text');
-        const authorElement = document.getElementById('testimonial-author');
-
-        function showTestimonial() {
-            textElement.classList.remove('fade-in');
-            setTimeout(() => {
-                textElement.textContent = `"${testimonials[currentTestimonial].text}"`;
-                authorElement.textContent = `— ${testimonials[currentTestimonial].author}`;
-                textElement.classList.add('fade-in');
-                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            }, 800);
-        }
-
-        showTestimonial();
-        setInterval(showTestimonial, 4200);
-
-        // Download resume button
-        document.getElementById('download-btn').onclick = () => {
-            alert('Downloading resume... (Connect this to your actual resume file)');
-        };
-
-        // Keyboard accessibility for Discord chip
-        document.querySelector('.discord-chip').onkeypress = (e) => {
-            if (e.key === 'Enter') copyDiscord();
-        };
-
-        // Close lightbox on click outside
-        document.getElementById('lightbox').onclick = (e) => {
-            if (e.target.id === 'lightbox') closeLightbox();
-        };
     </script>
 </body>
 </html>
